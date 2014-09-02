@@ -156,7 +156,7 @@ Biz birbirileriyle güçlü ilişkileri olan kümeleşmeleri istiyoruz.
 	  'yigit']]
 ```
 
-Networkx güçlü bağlantılar için Tarjan's Algorithm isimli bir algoritma kullanıyor. Görüldüğü üzere algoritmanın adı kaşifi Tarjan'dan geliyor. Bu algoritma bir directed graph'ın birbiriyle bağlantılı bileşenlerini çıkarmak için kullanılmakta. Bunun ile ilgili yeterince bilgiyi wikipedia'da bulabilirsiniz.
+Networkx güçlü bağlantılar için Tarjan's Algorithm algoritmasını kullanıyor. Bu algoritma bir directed graph'ın birbiriyle bağlantılı bileşenlerini çıkarmak için kullanılmakta. Bunun ile ilgili yeterince bilgiyi wikipedia'da bulabilirsiniz.
 
 Elde ettiğimiz bu veriler ile graph üzerinde biraz uğraşalım. Örnek olarak her topluluğu farklı bir renkte gösterebiliriz.
 
