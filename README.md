@@ -24,7 +24,7 @@ Bir graph'ın en temel parçasıdır. Bunu bir dictionary'inin bir key'i olarak 
 Edge (Relationship)
 -------------------
 
-İki node arasındaki ilişkiye edge adını vermekteyiz. Node'larda olduğu gibi ilişkiler de veri tutabilir. İlişkiler tek yönlü ya da çift yönlü olabilir. İlişkileri tek yönlü olan graph için Directed Graph diyebiliriz.
+İki node arasındaki ilişkiye edge adını vermekteyiz. Node'larda olduğu gibi ilişkiler de veri tutabilir. İlişkiler tek yönlü ya da çift yönlü olabilir. İlişkileri tek yönlü olan bir graph'a `Directed Graph` deniyor.
 
 İlişki yönlerini sosyal medya mecralarında gözlemleyebilirsiniz. Facebook üzerinde arkadaşınızla olan ilişkiniz graph üzerinde çift yönlüdür. Twitter üzerinde takip ettiğiniz biri ise tek yönlü.
 
@@ -42,12 +42,12 @@ Sosyal ağ mecralarında bir kişiye ulaşabilmeniz için iletişime geçmeniz g
 
 Degree
 ------
-Bir node'un gelen ya da giden toplam bağlantı sayısıdır. Toplam bağlantı sayısı en yüksek olan node'a hub diyebiliriz.
+Bir node'un gelen ya da giden toplam bağlantı sayısıdır. Bir grup içindeki toplam bağlantı sayısı en yüksek olan node'a `hub` diyebiliriz.
 
 
 Kolları Sıvayalım
 =================
-İnsanların birbirlerini takip edebildiği bir sosyal ağ düşünelim. Bunu en basit şekilde modelleyecek olursak aşağıdaki gibi bir dictionary yapısı kullanabiliriz.
+İnsanların birbirlerini takip edebildiği bir sosyal ağ düşünelim. Bunu en basit şekilde tasarlayacak olursak aşağıdaki gibi bir dictionary kullanabiliriz.
 
 
 	network = {
