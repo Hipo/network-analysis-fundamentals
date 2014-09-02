@@ -202,9 +202,11 @@ Peki elimizdeki bu gruplar ve içindeki node'lar ile ne gibi problemler çözebi
 
 Python İstanbul'daki birinin Hipo'dan birine mesaj göndermesi için iletişime geçmesi gereken kişilerin listesini çıkarabiliriz. 
 
-Javascript grubundaki biri için takip edebileceği aynı gruptan yeni kişiler önerebiliriz. 
+Javascript grubundaki biri için takip edebileceği aynı gruptan yeni kişiler önerebiliriz.
 
-Networkx kütüphanesinin kaynak kodlarını kesinlikle incelemenizi tavsiye ediyorum.
+Networkx hakkında bahsedeceklerim bu kadar, ancak içinde incelenecek dağlar kadar şey var. Kütüphanenin kaynak kodlarını mutlaka okumanızı tavsiye ediyorum.
+
+Son olarak bahsettiğimiz problemleri bir graph database (neo4j gibi) üzerinde çözmeyi denemenizi önerebilirim. Çünkü günlük hayatta hesaplayıp bitireceğiniz graph'lardan ziyade anlık olarak üzerine çalışmamız ve scale etmeniz gereken senaryolar karşımıza çıkıyor.
 
 Kolay gelsin.
 
