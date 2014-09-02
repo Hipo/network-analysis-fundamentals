@@ -111,7 +111,7 @@ nx.draw(graph)
 
 Elinizdeki graph'ı bir görsele çevirmek için `matplotlib` kütüphanesini kullanabilirsiniz. Ben IPython Notebook üzerinde çalışıyorum. Bu araç `nx.draw` metodunu çağırdığımda çıktıyı defterime yansıtıyor.
 
-![graph](http://i.imgur.com/DjytecF.png "graph")
+![graph](http://i.imgur.com/t8s0IUn.png "graph")
 
 Yukarıda gördüğünüz garip şey oluşturduğumuz graph'ın çıktısıdır. Kırmızı daireler graph üzerindeki node'larımızı, aralarındaki bağlantılar ise edge'leri temsil etmektedir. Node ve edge arasındaki iki bıyık bükümlük kalın çizgi ise ilişkinin yönünü belirtmektedir.
 
@@ -212,6 +212,5 @@ Kolay gelsin.
 
 - <http://networkx.github.io>
 - <http://matplotlib.org>
-- <https://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_algorithm>
 
 
