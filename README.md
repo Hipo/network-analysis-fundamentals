@@ -51,7 +51,7 @@ Kolları Sıvayalım
 
 ```python
 network = {
-    "fatih": ["erdem", "mehmetbaransu", "receptayyiperdogan", "cemal", 
+    "fatih": ["erdem", "mehmetbarancay", "tayyiperdogdu", "cemal",
               "taylan", "yigit", "serkan", "tuna", "cihanokyay"],
     "cemal": ["taylan", "yigit", "serkan", "sinan"],
     "erdem": ["fatih", "yigit"],
@@ -61,11 +61,11 @@ network = {
     "tuna": ["yigit", "taylan", "can"],
     "can": ["yigit", "serkan", "fatih", "sinan"],
     "sinan": ["yigit", "serkan", "fatih", "cemal"],
-    "fuatavni": ["receptayyiperdogan", "cbabdullahgul", "mehmetbaransu"],
-    "receptayyiperdogan": ["cbabdullahgul", "fuatavni", "fettullah"],
-    "cbabdullahgul": ["fettullah"],
-    "fettullah": ["fuatavni", "receptayyiperdogan", "fuatavni"],
-    "mehmetbaransu": ["fuatavni", "fettullah"],
+    "suatavni": ["tayyiperdogdu", "abdullahcicek", "mehmetbarancay"],
+    "tayyiperdogdu": ["abdullahcicek", "suatavni", "feyzullahgulen"],
+    "abdullahcicek": ["feyzullahgulen"],
+    "feyzullahgulen": ["suatavni", "tayyiperdogdu", "suatavni"],
+    "mehmetbarancay": ["suatavni", "feyzullahgulen"],
     "cihanokyay": ["fatihkadirakin", "sametatdag", "gokmengorgen"],
     "fatihkadirakin": ["cihanokyay", "berkerpeksag", "johnresig"],
     "sametatdag": ["cihanokyay", "fatihkadirakin", "berkerpeksag"],
@@ -90,14 +90,14 @@ import networkx as nx
 # bu sebeple DirectedGraph kullanmalıyız.
 graph = nx.DiGraph()
 
-# ilk yapmamız gereken oluşturduğumuz graph'a nodları eklemek
+# ilk yapmamız gereken oluşturduğumuz graph'a nodları eklemek.
 graph.add_nodes_from(network.keys())
 for users in network.values():
     for user in users:
         if not user in graph:
             graph.add_node(user)
 
-# node'lar üzerindeki ilişkileri (edge) tanımlıyoruz
+# node'lar üzerindeki ilişkileri (edge) tanımlıyoruz.
 for user, followed_users in network.items():
     for followee in followed_users:
         graph.add_edge(user, followee)
@@ -123,7 +123,7 @@ Biraz daha somut örnek vermek istiyorum. Node'ları label'ları ile birlikte ç
 
 Yukarıdaki görselde sağ altta oluşan kümeleşme bir topluluğu ifade ediyor. Bu topluluk Python İstanbul topluluğu. Bu veri topluluğun içerisindeki kişilerin birbirini takip etmesiyle ortaya çıktı.
 
-Haydi bu graph üzerinde yorumladığımız kümelere erişmeye çalışalım. Bu kümeleşmeler birer subgraph olarak yorumlanabilir. Networkx size bir graph üzerine birbiriyle hiç bağlantısı olmayan node'ları, birbiriyle zayıf bağlantıları olanları, ya da birbiriyle bağlantıları güçlü olan node'ları subgraph olarak verebilir.
+Hadi bu graph üzerinde yorumladığımız kümelere erişmeye çalışalım. Bu kümeleşmeler birer subgraph olarak yorumlanabilir. Networkx size bir graph üzerine birbiriyle hiç bağlantısı olmayan node'ları, birbiriyle zayıf bağlantıları olanları, ya da birbiriyle bağlantıları güçlü olan node'ları subgraph olarak verebilir.
 
 Biz birbirileriyle güçlü ilişkileri olan kümeleşmeleri istiyoruz. 
 
@@ -200,13 +200,11 @@ Bu gruplara isim vermek istiyorum.
 
 Peki elimizdeki bu gruplar ve içindeki node'lar ile ne gibi problemler çözebiliriz? Tamamen sizin hayal gücünüze bağlı. 
 
-- Python İstanbul'daki birinin Hipo'dan birine mesaj göndermesi için iletişime geçmesi gereken kişilerin listesini çıkarabiliriz. 
+Python İstanbul'daki birinin Hipo'dan birine mesaj göndermesi için iletişime geçmesi gereken kişilerin listesini çıkarabiliriz. 
 
-- Javascript grubundaki biri için takip edebileceği aynı gruptan yeni kişiler önerebiliriz. 
+Javascript grubundaki biri için takip edebileceği aynı gruptan yeni kişiler önerebiliriz. 
 
-- Politikacılar grubundan birisini takip eden birine grup içindeki en popüler node'lardan birini önerebiliriz.
-
-Networkx kütüphanesinin kaynak kodlarını kesinlikle incelemenizi tavsiye ediyorum. Codebase baştan aşağı bir graph theory kitabını andırıyor.
+Networkx kütüphanesinin kaynak kodlarını kesinlikle incelemenizi tavsiye ediyorum.
 
 Kolay gelsin.
 
