@@ -111,7 +111,7 @@ nx.draw(graph)
 
 Elinizdeki graph'ı bir görsele çevirmek için `matplotlib` kütüphanesini kullanabilirsiniz. Ben IPython Notebook üzerinde çalışıyorum. Bu araç `nx.draw` metodunu çağırdığımda çıktıyı defterime yansıtıyor.
 
-	![graph](http://i.imgur.com/DjytecF.png "graph")
+![graph](http://i.imgur.com/DjytecF.png "graph")
 
 Yukarıda gördüğünüz garip şey oluşturduğumuz graph'ın çıktısıdır. Kırmızı daireler graph üzerindeki node'larımızı, aralarındaki bağlantılar ise edge'leri temsil etmektedir. Node ve edge arasındaki iki bıyık bükümlük kalın çizgi ise ilişkinin yönünü belirtmektedir.
 
@@ -119,7 +119,7 @@ Graph'ı incelediğimizde bazı node'ların yan yana kümeleştiğini farkediyor
 
 Biraz daha somut örnek vermek istiyorum. Node'ları label'ları ile birlikte çizdireceğim.
 
-	![graph](http://i.imgur.com/K8n1ynn.png "graph")
+![graph](http://i.imgur.com/K8n1ynn.png "graph")
 
 Yukarıdaki görselde sağ altta oluşan kümeleşme bir topluluğu ifade ediyor. Bu topluluk Python İstanbul topluluğu. Bu veri topluluğun içerisindeki kişilerin birbirini takip etmesiyle ortaya çıktı.
 
@@ -189,7 +189,7 @@ nx.draw(graph,
 
 Aşağıdaki gibi bir çıktı elde etmekteyiz.
 
-	![graph](http://i.imgur.com/DLMkXXV.png "graph")
+![graph](http://i.imgur.com/DLMkXXV.png "graph")
 
 Bu gruplara isim vermek istiyorum.
 	
