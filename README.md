@@ -49,64 +49,69 @@ Kolları Sıvayalım
 =================
 İnsanların birbirlerini takip edebildiği bir sosyal ağ düşünelim. Bunu en basit şekilde tasarlayacak olursak aşağıdaki gibi bir dictionary kullanabiliriz.
 
-
-	network = {
-	    "fatih": ["erdem", "mehmetbaransu", "receptayyiperdogan", "cemal", 
-	              "taylan", "yigit", "serkan", "tuna", "cihanokyay"],
-	    "cemal": ["taylan", "yigit", "serkan", "sinan"],
-	    "erdem": ["fatih", "yigit"],
-	    "taylan": ["yigit", "serkan", "tuna", "cemal"],
-	    "yigit": ["yigit", "serkan", "tuna", "can"],
-	    "serkan": ["yigit", "serkan", "tuna", "erdem"],
-	    "tuna": ["yigit", "taylan", "can"],
-	    "can": ["yigit", "serkan", "fatih", "sinan"],
-	    "sinan": ["yigit", "serkan", "fatih", "cemal"],
-	    "fuatavni": ["receptayyiperdogan", "cbabdullahgul", "mehmetbaransu"],
-	    "receptayyiperdogan": ["cbabdullahgul", "fuatavni", "fettullah"],
-	    "cbabdullahgul": ["fettullah"],
-	    "fettullah": ["fuatavni", "receptayyiperdogan", "fuatavni"],
-	    "mehmetbaransu": ["fuatavni", "fettullah"],
-	    "cihanokyay": ["fatihkadirakin", "sametatdag", "gokmengorgen"],
-	    "fatihkadirakin": ["cihanokyay", "berkerpeksag", "johnresig"],
-	    "sametatdag": ["cihanokyay", "fatihkadirakin", "berkerpeksag"],
-	    "berkerpeksag": ["cihanokyay", "gokmengorgen"],
-	    "gokmengorgen": ["cihanokyay", "sametatdag", "berkerpeksag"],
-	    "eminbugrasakal": ["eminbugrasakal"],
-	    "johnresig": ["douglescrockford", "addyosmani", "marijnhaverbeke"],
-	    "addyosmani": ["douglescrockford", "johnresig", "marijnhaverbeke"],
-	    "trevorburnham": ["douglescrockford", "johnresig", "marijnhaverbeke"],
-	    "marijnhaverbeke": ["douglescrockford", "addyosmani", "trevorburnham"],
-	    "douglescrockford": ["martinfowler", "trevorburnham"],
-	    "martinfowler": ["douglescrockford", "johnresig"],
-	}
+```python
+network = {
+    "fatih": ["erdem", "mehmetbaransu", "receptayyiperdogan", "cemal", 
+              "taylan", "yigit", "serkan", "tuna", "cihanokyay"],
+    "cemal": ["taylan", "yigit", "serkan", "sinan"],
+    "erdem": ["fatih", "yigit"],
+    "taylan": ["yigit", "serkan", "tuna", "cemal"],
+    "yigit": ["yigit", "serkan", "tuna", "can"],
+    "serkan": ["yigit", "serkan", "tuna", "erdem"],
+    "tuna": ["yigit", "taylan", "can"],
+    "can": ["yigit", "serkan", "fatih", "sinan"],
+    "sinan": ["yigit", "serkan", "fatih", "cemal"],
+    "fuatavni": ["receptayyiperdogan", "cbabdullahgul", "mehmetbaransu"],
+    "receptayyiperdogan": ["cbabdullahgul", "fuatavni", "fettullah"],
+    "cbabdullahgul": ["fettullah"],
+    "fettullah": ["fuatavni", "receptayyiperdogan", "fuatavni"],
+    "mehmetbaransu": ["fuatavni", "fettullah"],
+    "cihanokyay": ["fatihkadirakin", "sametatdag", "gokmengorgen"],
+    "fatihkadirakin": ["cihanokyay", "berkerpeksag", "johnresig"],
+    "sametatdag": ["cihanokyay", "fatihkadirakin", "berkerpeksag"],
+    "berkerpeksag": ["cihanokyay", "gokmengorgen"],
+    "gokmengorgen": ["cihanokyay", "sametatdag", "berkerpeksag"],
+    "eminbugrasakal": ["eminbugrasakal"],
+    "johnresig": ["douglescrockford", "addyosmani", "marijnhaverbeke"],
+    "addyosmani": ["douglescrockford", "johnresig", "marijnhaverbeke"],
+    "trevorburnham": ["douglescrockford", "johnresig", "marijnhaverbeke"],
+    "marijnhaverbeke": ["douglescrockford", "addyosmani", "trevorburnham"],
+    "douglescrockford": ["martinfowler", "trevorburnham"],
+    "martinfowler": ["douglescrockford", "johnresig"],
+}
+```
 
 Dictionary key'leri olarak kişiler ve değerleri olarak da o kişinin takip ettiği kişilerin listelerini tutuyoruz. Elimizdeki bu verileri networkx kütüphanesi ile üzerinde analiz yapabileceğimiz bir graph'a çevirebiliriz.
 
-    import networkx as nx
-	
-	# sosyal ağımız tek yönlü ilişkilerden oluşmaktadır.
-	# bu sebeple DirectedGraph kullanmalıyız.
-	graph = nx.DiGraph()
+```python
+import networkx as nx
 
-	# ilk yapmamız gereken oluşturduğumuz graph'a nodları eklemek
-	graph.add_nodes_from(network.keys())
-	for users in network.values():
-	    for user in users:
-	        if not user in graph:
-	            graph.add_node(user)
+# sosyal ağımız tek yönlü ilişkilerden oluşmaktadır.
+# bu sebeple DirectedGraph kullanmalıyız.
+graph = nx.DiGraph()
 
-	# node'lar üzerindeki ilişkileri (edge) tanımlıyoruz
-    for user, followed_users in network.items():
-	    for followee in followed_users:
-	        graph.add_edge(user, followee)
+# ilk yapmamız gereken oluşturduğumuz graph'a nodları eklemek
+graph.add_nodes_from(network.keys())
+for users in network.values():
+    for user in users:
+        if not user in graph:
+            graph.add_node(user)
+
+# node'lar üzerindeki ilişkileri (edge) tanımlıyoruz
+for user, followed_users in network.items():
+    for followee in followed_users:
+        graph.add_edge(user, followee)
+```
 
 Graph'ımızı oluşturduk. Bakalım nasıl gözüküyor.
 
-	nx.draw(graph)
+```python
+nx.draw(graph)
+```
 
 Elinizdeki graph'ı bir görsele çevirmek için `matplotlib` kütüphanesini kullanabilirsiniz. Ben IPython Notebook üzerinde çalışıyorum. Bu araç `nx.draw` metodunu çağırdığımda çıktıyı defterime yansıtıyor.
 
-	![graph](http://i.imgur.com/DjytecF.png)
+	![graph](http://i.imgur.com/DjytecF.png "graph")
 
 Yukarıda gördüğünüz garip şey oluşturduğumuz graph'ın çıktısıdır. Kırmızı daireler graph üzerindeki node'larımızı, aralarındaki bağlantılar ise edge'leri temsil etmektedir. Node ve edge arasındaki iki bıyık bükümlük kalın çizgi ise ilişkinin yönünü belirtmektedir.
 
@@ -114,7 +119,7 @@ Graph'ı incelediğimizde bazı node'ların yan yana kümeleştiğini farkediyor
 
 Biraz daha somut örnek vermek istiyorum. Node'ları label'ları ile birlikte çizdireceğim.
 
-	![graph](http://i.imgur.com/K8n1ynn.png)
+	![graph](http://i.imgur.com/K8n1ynn.png "graph")
 
 Yukarıdaki görselde sağ altta oluşan kümeleşme bir topluluğu ifade ediyor. Bu topluluk Python İstanbul topluluğu. Bu veri topluluğun içerisindeki kişilerin birbirini takip etmesiyle ortaya çıktı.
 
@@ -122,7 +127,8 @@ Haydi bu graph üzerinde yorumladığımız kümelere erişmeye çalışalım. B
 
 Biz birbirileriyle güçlü ilişkileri olan kümeleşmeleri istiyoruz. 
 
-	>>> list(nx.strongly_connected_components(graph))
+```python
+>>> list(nx.strongly_connected_components(graph))
 	[['johnresig',
 	  'marijnhaverbeke',
 	  'addyosmani',
@@ -148,39 +154,42 @@ Biz birbirileriyle güçlü ilişkileri olan kümeleşmeleri istiyoruz.
 	  'serkan',
 	  'erdem',
 	  'yigit']]
+```
 
 Networkx güçlü bağlantılar için Tarjan's Algorithm isimli bir algoritma kullanıyor. Görüldüğü üzere algoritmanın adı kaşifi Tarjan'dan geliyor. Bu algoritma bir directed graph'ın birbiriyle bağlantılı bileşenlerini çıkarmak için kullanılmakta. Bunun ile ilgili yeterince bilgiyi wikipedia'da bulabilirsiniz.
 
 Elde ettiğimiz bu veriler ile graph üzerinde biraz uğraşalım. Örnek olarak her topluluğu farklı bir renkte gösterebiliriz.
 
-	subgraphs = list(nx.strongly_connected_components(graph))
+```python
+subgraphs = list(nx.strongly_connected_components(graph))
 
-	# html isimleri ile renklerimizi tanımlıyoruz
-	colors = ["lightgreen", "lemonchiffon", "skyblue", "mistyrose", "aliceblue"]
-	
-	
-	def find_color(node):
-		# node'un dahil olduğu grup üzerinden rengini buluyoruz
-	    for subgraph in subgraphs:
-	        if node in subgraph:
-	            return colors[subgraphs.index(subgraph)]
+# html isimleri ile renklerimizi tanımlıyoruz
+colors = ["lightgreen", "lemonchiffon", "skyblue", "mistyrose", "aliceblue"]
 
-        # node bir gruba değil değil
-	    return "ghostwhite"
-	    
-	node_colors = map(find_color, graph.nodes())
 
-	# çıktımızın görsel değerlerini belirleyip render ettiriyoruz
-	plt.figure(figsize=(16, 10))
-	nx.draw(graph, 
-	        with_labels=True, 
-	        node_size=1400, 
-	        node_color=node_colors, 
-	        width=0.3)
+def find_color(node):
+	# node'un dahil olduğu grup üzerinden rengini buluyoruz
+    for subgraph in subgraphs:
+        if node in subgraph:
+            return colors[subgraphs.index(subgraph)]
+
+    # node bir gruba değil değil
+    return "ghostwhite"
+    
+node_colors = map(find_color, graph.nodes())
+
+# çıktımızın görsel değerlerini belirleyip render ettiriyoruz
+plt.figure(figsize=(16, 10))
+nx.draw(graph, 
+        with_labels=True, 
+        node_size=1400, 
+        node_color=node_colors, 
+        width=0.3)
+```
 
 Aşağıdaki gibi bir çıktı elde etmekteyiz.
 
-	![graph](http://i.imgur.com/DLMkXXV.png)
+	![graph](http://i.imgur.com/DLMkXXV.png "graph")
 
 Bu gruplara isim vermek istiyorum.
 	
@@ -191,16 +200,18 @@ Bu gruplara isim vermek istiyorum.
 
 Peki elimizdeki bu gruplar ve içindeki node'lar ile ne gibi problemler çözebiliriz? Tamamen sizin hayal gücünüze bağlı. 
 
-	- Python İstanbul'daki birinin Hipo'dan birine mesaj göndermesi için iletişime geçmesi gereken kişilerin listesini çıkarabiliriz. 
+- Python İstanbul'daki birinin Hipo'dan birine mesaj göndermesi için iletişime geçmesi gereken kişilerin listesini çıkarabiliriz. 
 
-	- Javascript grubundaki biri için takip edebileceği aynı gruptan yeni kişiler önerebiliriz. 
-	
-	- Politikacılar grubundan birisini takip eden birine grup içindeki en popüler node'lardan birini önerebiliriz.
+- Javascript grubundaki biri için takip edebileceği aynı gruptan yeni kişiler önerebiliriz. 
+
+- Politikacılar grubundan birisini takip eden birine grup içindeki en popüler node'lardan birini önerebiliriz.
 
 Networkx kütüphanesinin kaynak kodlarını kesinlikle incelemenizi tavsiye ediyorum. Codebase baştan aşağı bir graph theory kitabını andırıyor.
 
 Kolay gelsin.
 
-<http://networkx.github.io>
+- <http://networkx.github.io>
+- <http://matplotlib.org>
+- <https://en.wikipedia.org/wiki/Tarjan's_strongly_connected_components_algorithm>
 
 
