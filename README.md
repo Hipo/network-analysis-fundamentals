@@ -3,7 +3,7 @@ Networkx
 
 Networkx, karmaşık ağları analiz ve manipüle etmek için geliştirilmiş bir Python kütüphanesidir. 
 
-Karmaşık ağlara örnek olarak bilgisayar ağlarını ya da sosyal ağları örnek gösterebiliriz. Buradaki sosyal ağlar bir sosyoloji terimidir ve sosyal medya ağlarını da kapsar.
+Karmaşık ağlara örnek olarak bilgisayar ağlarını ya da sosyal ağları örnek gösterebiliriz. 
 
 
 Temel Graph Terimleri
